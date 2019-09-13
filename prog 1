@@ -1,0 +1,240 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(Environment.NewLine);
+
+            int filas = 0, columnas = 0;
+            int x = 0;
+            //int limiteH = 1, limiteV = 1;
+            int cont = 0, valor = 1;
+            int marca, f = 1, c = 1;
+
+            ConsoleKeyInfo tecla;
+
+
+            Console.Write("Tamaño :  ");
+            String tam = Console.ReadLine();
+            String[] num = tam.Split(',');
+            
+            filas = Convert.ToInt32(num[0]);
+            columnas = Convert.ToInt32(num[1]);
+            
+            Console.WriteLine("\n\n\t[" + columnas + " X " + filas + "]");
+
+            int[,] matriz = new int[filas, columnas];
+
+            /*for (int i = 0; i < filas; i++)
+            {
+                for (int j = 0; j < columnas; j++)
+                {
+                    matriz[i, j] = x++;
+                    //x++;
+                }
+            }*/
+
+            do
+            {
+                Console.WriteLine("\t\t");
+                Console.Write("\n\n");
+                foreach (int i in matriz)
+                {
+                    if (i / 10 <= 0)
+                    {
+                        Console.Write(i + "   ");
+                    }
+                    else
+                    {
+                        Console.Write(i + "  ");
+                    }
+                    cont++;
+                    if (cont == columnas)
+                    {
+                        Console.WriteLine();
+                        cont = 0;
+                    }
+                }
+
+                tecla = Console.ReadKey();
+                //int op = Convert.ToInt32(tecla);
+                Console.WriteLine(tecla.Key);
+
+                switch (tecla.Key)
+                {
+                    case ConsoleKey.RightArrow:
+                        f++;  
+                        if (f == filas)
+                        {
+                            f = 0;
+                        }
+                        if (valor == 10)
+                        {
+                            valor = 0;
+                        }
+                        if (f == 4)
+                        {
+
+                        }
+                        matriz[c, f] = valor;
+                        matriz[c, f - 1] = valor;
+                        matriz[c, f + 1] = valor;
+                        matriz[c - 1, f] = valor;
+                        matriz[c + 1, f] = valor;
+                        matriz[c - 1, f - 1] = valor;
+                        matriz[c - 1, f + 1] = valor;
+                        matriz[c + 1, f - 1] = valor;
+                        matriz[c + 1, f + 1] = valor;
+                        valor++;
+                        marca = matriz[c, f];
+                        Console.Write(marca + " " + f);
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        f--;
+                        if (f < 0)
+                        {
+                            f = filas - 1;
+                        }
+                        if (valor == 10)
+                        {
+                            valor = 0;
+                        }
+                        matriz[c, f] = valor;
+                        matriz[c, f - 1] = valor;
+                        matriz[c, f + 1] = valor;
+                        matriz[c - 1, f] = valor;
+                        matriz[c + 1, f] = valor;
+                        matriz[c - 1, f - 1] = valor;
+                        matriz[c - 1, f + 1] = valor;
+                        matriz[c + 1, f - 1] = valor;
+                        matriz[c + 1, f + 1] = valor;
+                        valor++;
+                        marca = matriz[c, f];
+                        Console.Write(marca + " " + f);
+                        break;
+                    case ConsoleKey.UpArrow:
+                        c--;
+                        if (c < 0)
+                        {
+                            c = columnas - 1;
+                        }
+                        if (valor == 10)
+                        {
+                            valor = 0;
+                        }
+                        matriz[c, f] = valor;
+                        matriz[c, f - 1] = valor;
+                        matriz[c, f + 1] = valor;
+                        matriz[c - 1, f] = valor;
+                        matriz[c + 1, f] = valor;
+                        matriz[c - 1, f - 1] = valor;
+                        matriz[c - 1, f + 1] = valor;
+                        matriz[c + 1, f - 1] = valor;
+                        matriz[c + 1, f + 1] = valor;
+                        valor++;
+                        marca = matriz[c, f];
+                        Console.Write(marca + " " + c);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        c++;
+                        if (c == columnas)
+                        {
+                            c = 0;
+                        }
+                        if (valor == 10)
+                        {
+                            valor = 0;
+                        }
+                        matriz[c, f] = valor;
+                        matriz[c, f - 1] = valor;
+                        matriz[c, f + 1] = valor;
+                        matriz[c - 1, f] = valor;
+                        matriz[c + 1, f] = valor;
+                        matriz[c - 1, f - 1] = valor;
+                        matriz[c - 1, f + 1] = valor;
+                        matriz[c + 1, f - 1] = valor;
+                        matriz[c + 1, f + 1] = valor;
+                        valor++;
+                        marca = matriz[c, f];
+                        Console.Write(marca + " " + c);
+                        break;
+                    default:
+                        break;
+                }
+                Console.Clear();
+            } while (true != ConsoleKeyInfo.Equals(tecla.Key, ConsoleKey.Escape));
+            
+
+                /*unsafe
+                {
+                    fixed (int* puntero1 = &matriz[1, 1])
+                    {
+                        int* puntero2 = puntero1;
+                        //int* puntero3;
+
+                        do
+                        {
+                            tecla = Console.ReadKey();
+                            //int op = Convert.ToInt32(tecla);
+                            Console.WriteLine(tecla.Key);
+                            switch (tecla.Key)
+                            {
+                                case ConsoleKey.RightArrow:
+                                    puntero2 += 1;
+                                    limiteH++;
+                                    if (limiteH == columnas)
+                                    {
+                                        puntero2 -= columnas;
+                                        limiteH = 0;
+                                    }
+                                    Console.Write(*puntero2 + "-");
+                                    break;
+                                case ConsoleKey.LeftArrow:
+                                    puntero2 -= 1;
+                                    limiteH--;
+                                    if (limiteH < 0)
+                                    {
+                                        puntero2 += columnas;
+                                        limiteH = columnas;
+                                    }
+                                    Console.Write(*puntero2 + "-");
+                                    break;
+                                case ConsoleKey.UpArrow:
+                                    puntero2 -= filas;
+                                    limiteV--;
+                                    if (limiteV < 0)
+                                    {
+                                        puntero2 += filas * filas;
+                                        limiteV = filas;
+                                    }
+
+                                    Console.Write(*puntero2 + "-");
+                                    break;
+                                case ConsoleKey.DownArrow:
+                                    puntero2 += filas;
+                                    limiteV++;
+                                    Console.Write(*puntero2 + "-");
+                                    break;
+                                default:
+                                    break;
+                            }
+                            Console.Write("\n\tinicial " + matriz[1, 1]);
+                            Console.Write(Environment.NewLine);
+                            Console.WriteLine("---------------");
+                        } while (true != ConsoleKeyInfo.Equals(tecla.Key, ConsoleKey.Escape));
+
+                    }
+                }*/
+
+
+                Console.Write("\n\tinicial " + matriz[1, 1]);
+                Console.WriteLine(Environment.NewLine);
+                Console.WriteLine("---------------");
+                Console.WriteLine(Environment.NewLine);
+               
+        }   
+    }
+}
