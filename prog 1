@@ -115,10 +115,26 @@ namespace ConsoleApp1
             {
                 if (f == filas - 1 && c == 0)
                 {
-
-                } else if (f == filas - 1 && c == columnas - 1)
+                    matriz[c, f] = valor;
+                    matriz[c, f - 1] = valor;
+                    matriz[c + 1, f] = valor;
+                    matriz[c + 1, f - 1] = valor;
+                    matriz[columnas - 1, filas - 1] = valor;
+                    matriz[columnas - 1, f - 1] = valor;
+                    matriz[0, 0] = valor;
+                    matriz[c + 1, 0] = valor;
+                    matriz[columnas - 1, 0] = valor;
+                } else if (f == 0 && c == 0)
                 {
-
+                    matriz[c, f] = valor;
+                    matriz[c, f + 1] = valor;
+                    matriz[c + 1, f] = valor;
+                    matriz[c + 1, f + 1] = valor;
+                    matriz[c + 1, filas - 1] = valor;
+                    matriz[c, filas - 1] = valor;
+                    matriz[columnas - 1, 0] = valor;
+                    matriz[columnas - 1, f + 1] = valor;
+                    matriz[columnas - 1, filas - 1] = valor;
                 } else if (f == filas - 1)
                 {
                     matriz[c, f] = valor;
@@ -130,7 +146,7 @@ namespace ConsoleApp1
                     matriz[c - 1, 0] = valor;
                     matriz[c + 1, f - 1] = valor;
                     matriz[c + 1, 0] = valor;
-                } else if (f > 0 && f <= filas - 2)
+                } else if (f > 0 && f < filas - 1)
                 {
                     matriz[c, f] = valor;
                     matriz[c, f - 1] = valor;
@@ -160,11 +176,27 @@ namespace ConsoleApp1
             {
                 if (f == 0 && c == columnas - 1)
                 {
-
+                    matriz[c, f] = valor;
+                    matriz[c, f + 1] = valor;
+                    matriz[c - 1, f] = valor;
+                    matriz[c - 1, f + 1] = valor;
+                    matriz[0, 0] = valor;
+                    matriz[0, f + 1] = valor;
+                    matriz[0, filas - 1] = valor;
+                    matriz[c - 1, filas - 1] = valor;
+                    matriz[columnas - 1, filas - 1] = valor;
                 }
                 else if (f == filas - 1 && c == columnas - 1)
                 {
-
+                    matriz[c, f] = valor;
+                    matriz[c, f - 1] = valor;
+                    matriz[c - 1, f] = valor;
+                    matriz[c - 1, f - 1] = valor;
+                    matriz[0, filas - 1] = valor;
+                    matriz[0, f - 1] = valor;
+                    matriz[columnas - 1, 0] = valor;
+                    matriz[c - 1, 0] = valor;
+                    matriz[0, 0] = valor;
                 }
                 else if (c == columnas - 1)
                 {
@@ -178,7 +210,7 @@ namespace ConsoleApp1
                     matriz[0, f - 1] = valor;
                     matriz[0, f + 1] = valor;
                 }
-                else if (c > 0 && c <= columnas - 2)
+                else if (c > 0 && c < filas - 1)
                 {
                     matriz[c, f] = valor;
                     matriz[c, f - 1] = valor;
@@ -190,7 +222,7 @@ namespace ConsoleApp1
                     matriz[c + 1, f - 1] = valor;
                     matriz[c + 1, f + 1] = valor;
                 }
-                else if (c == 0)
+                else if (c == 0 && f != filas - 1)
                 {
                     matriz[c, f] = valor;
                     matriz[c, f - 1] = valor;
@@ -207,4 +239,3 @@ namespace ConsoleApp1
         }   
     }
 }
-
