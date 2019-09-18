@@ -22,7 +22,7 @@ namespace ConsoleApp1
             columnas = Convert.ToInt32(num[1]);
             
             
-            int[,] matriz = new int[filas, columnas];
+            char[,] matriz = new char[filas, columnas];
             
             do
             {
@@ -67,6 +67,7 @@ namespace ConsoleApp1
                         {
                             valor = 0;
                         }
+                        Console.WriteLine("\n\t" + c + ", " + f);
                         incremento();
                         break;
                     case ConsoleKey.LeftArrow:
@@ -79,6 +80,7 @@ namespace ConsoleApp1
                         {
                             valor = 0;
                         }
+                        Console.WriteLine("\n\t" + c + ", " + f);
                         incremento();
                         break;
                     case ConsoleKey.UpArrow:
@@ -91,7 +93,8 @@ namespace ConsoleApp1
                         {
                             valor = 0;
                         }
-                        arriba();
+                        Console.WriteLine("\n\t" + c + ", " + f);
+                        incremento();
                         break;
                     case ConsoleKey.DownArrow:
                         c++;
@@ -103,7 +106,8 @@ namespace ConsoleApp1
                         {
                             valor = 0;
                         }
-                        arriba();
+                        Console.WriteLine("\n\t" + c + ", " + f);
+                        incremento();
                         break;
                     default:
                         break;
@@ -115,126 +119,105 @@ namespace ConsoleApp1
             {
                 if (f == filas - 1 && c == 0)
                 {
-                    matriz[c, f] = valor;
-                    matriz[c, f - 1] = valor;
-                    matriz[c + 1, f] = valor;
-                    matriz[c + 1, f - 1] = valor;
-                    matriz[columnas - 1, filas - 1] = valor;
-                    matriz[columnas - 1, f - 1] = valor;
-                    matriz[0, 0] = valor;
-                    matriz[c + 1, 0] = valor;
-                    matriz[columnas - 1, 0] = valor;
+                    matriz[c, f] = Convert.ToChar(valor);
+                    matriz[c, f - 1] = Convert.ToChar(valor);
+                    matriz[c + 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, f - 1] = Convert.ToChar(valor);
+                    matriz[columnas - 1, filas - 1] = Convert.ToChar(valor);
+                    matriz[columnas - 1, f - 1] = Convert.ToChar(valor);
+                    matriz[0, 0] = Convert.ToChar(valor);
+                    matriz[c + 1, 0] = Convert.ToChar(valor);
+                    matriz[columnas - 1, 0] = Convert.ToChar(valor);
                 } else if (f == 0 && c == 0)
                 {
-                    matriz[c, f] = valor;
-                    matriz[c, f + 1] = valor;
-                    matriz[c + 1, f] = valor;
-                    matriz[c + 1, f + 1] = valor;
-                    matriz[c + 1, filas - 1] = valor;
-                    matriz[c, filas - 1] = valor;
-                    matriz[columnas - 1, 0] = valor;
-                    matriz[columnas - 1, f + 1] = valor;
-                    matriz[columnas - 1, filas - 1] = valor;
-                } else if (f == filas - 1)
+                    matriz[c, f] = Convert.ToChar(valor);
+                    matriz[c, f + 1] = Convert.ToChar(valor);
+                    matriz[c + 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, f + 1] = Convert.ToChar(valor);
+                    matriz[c + 1, filas - 1] = Convert.ToChar(valor);
+                    matriz[c, filas - 1] = Convert.ToChar(valor);
+                    matriz[columnas - 1, 0] = Convert.ToChar(valor);
+                    matriz[columnas - 1, f + 1] = Convert.ToChar(valor);
+                    matriz[columnas - 1, filas - 1] = Convert.ToChar(valor);
+                } else if (f == 0 && c == columnas - 1)
                 {
-                    matriz[c, f] = valor;
-                    matriz[c, f - 1] = valor;
-                    matriz[c, 0] = valor;
-                    matriz[c - 1, f] = valor;
-                    matriz[c + 1, f] = valor;
-                    matriz[c - 1, f - 1] = valor;
-                    matriz[c - 1, 0] = valor;
-                    matriz[c + 1, f - 1] = valor;
-                    matriz[c + 1, 0] = valor;
-                } else if (f > 0 && f < filas - 1)
+                    matriz[c, f] = Convert.ToChar(valor);
+                    matriz[c, f + 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f] = Convert.ToChar(valor);
+                    matriz[c - 1, f + 1] = Convert.ToChar(valor);
+                    matriz[0, 0] = Convert.ToChar(valor);
+                    matriz[0, f + 1] = Convert.ToChar(valor);
+                    matriz[0, filas - 1] = Convert.ToChar(valor);
+                    matriz[c - 1, filas - 1] = Convert.ToChar(valor);
+                    matriz[columnas - 1, filas - 1] = Convert.ToChar(valor);
+                } else if (f == filas - 1 && c == columnas - 1)
                 {
-                    matriz[c, f] = valor;
-                    matriz[c, f - 1] = valor;
-                    matriz[c, f + 1] = valor;
-                    matriz[c - 1, f] = valor;
-                    matriz[c + 1, f] = valor;
-                    matriz[c - 1, f - 1] = valor;
-                    matriz[c - 1, f + 1] = valor;
-                    matriz[c + 1, f - 1] = valor;
-                    matriz[c + 1, f + 1] = valor;
-                } else if (f == 0)
+                    matriz[c, f] = Convert.ToChar(valor);
+                    matriz[c, f - 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f] = Convert.ToChar(valor);
+                    matriz[c - 1, f - 1] = Convert.ToChar(valor);
+                    matriz[0, filas - 1] = Convert.ToChar(valor);
+                    matriz[0, f - 1] = Convert.ToChar(valor);
+                    matriz[columnas - 1, 0] = Convert.ToChar(valor);
+                    matriz[c - 1, 0] = Convert.ToChar(valor);
+                    matriz[0, 0] = Convert.ToChar(valor);
+                } else if (f == 0 && c != 0 && c != columnas - 1)
                 {
-                    matriz[c, f] = valor;
-                    matriz[c, filas - 1] = valor;
-                    matriz[c, f + 1] = valor;
-                    matriz[c - 1, f] = valor;
-                    matriz[c + 1, f] = valor;
-                    matriz[c - 1, filas - 1] = valor;
-                    matriz[c - 1, f + 1] = valor;
-                    matriz[c + 1, filas - 1] = valor;
-                    matriz[c + 1, f + 1] = valor;
+                    matriz[c, f] = Convert.ToChar(valor);
+                    matriz[c, f + 1] = Convert.ToChar(valor);
+                    matriz[c, filas - 1] = Convert.ToChar(valor);
+                    matriz[c - 1, filas - 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f + 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, f + 1] = Convert.ToChar(valor);
+                    matriz[c + 1, filas - 1] = Convert.ToChar(valor);
+                } else if (f == filas - 1 && c != 0 && c != columnas - 1)
+                {
+                    matriz[c, f] = Convert.ToChar(valor);
+                    matriz[c, f - 1] = Convert.ToChar(valor);
+                    matriz[c, 0] = Convert.ToChar(valor);
+                    matriz[c - 1, f - 1] = Convert.ToChar(valor);
+                    matriz[c - 1, 0] = Convert.ToChar(valor);
+                    matriz[c - 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, 0] = Convert.ToChar(valor);
+                    matriz[c + 1, f - 1] = Convert.ToChar(valor);
+                } else if (c == 0 && f != 0 && f != filas - 1)
+                {
+                    matriz[c, f] = Convert.ToChar(valor);
+                    matriz[c, f + 1] = Convert.ToChar(valor);
+                    matriz[c, f - 1] = Convert.ToChar(valor);
+                    matriz[columnas - 1, f - 1] = Convert.ToChar(valor);
+                    matriz[columnas - 1, f + 1] = Convert.ToChar(valor);
+                    matriz[columnas - 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, f + 1] = Convert.ToChar(valor);
+                    matriz[c + 1, f - 1] = Convert.ToChar(valor);
+                } else if (c == columnas - 1 && f != 0 && f != filas - 1)
+                {
+                    matriz[c, f] = Convert.ToChar(valor);
+                    matriz[c, f + 1] = Convert.ToChar(valor);
+                    matriz[c, f - 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f - 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f + 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f] = Convert.ToChar(valor);
+                    matriz[0, f] = Convert.ToChar(valor);
+                    matriz[0, f + 1] = Convert.ToChar(valor);
+                    matriz[0, f - 1] = Convert.ToChar(valor);
+                } else
+                {
+                    matriz[c, f] = Convert.ToChar(valor);
+                    matriz[c, f + 1] = Convert.ToChar(valor);
+                    matriz[c, f - 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f - 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f + 1] = Convert.ToChar(valor);
+                    matriz[c - 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, f] = Convert.ToChar(valor);
+                    matriz[c + 1, f + 1] = Convert.ToChar(valor);
+                    matriz[c + 1, f - 1] = Convert.ToChar(valor);
                 }
-                valor++;
-            }
-           
-            void arriba()
-            {
-                if (f == 0 && c == columnas - 1)
-                {
-                    matriz[c, f] = valor;
-                    matriz[c, f + 1] = valor;
-                    matriz[c - 1, f] = valor;
-                    matriz[c - 1, f + 1] = valor;
-                    matriz[0, 0] = valor;
-                    matriz[0, f + 1] = valor;
-                    matriz[0, filas - 1] = valor;
-                    matriz[c - 1, filas - 1] = valor;
-                    matriz[columnas - 1, filas - 1] = valor;
-                }
-                else if (f == filas - 1 && c == columnas - 1)
-                {
-                    matriz[c, f] = valor;
-                    matriz[c, f - 1] = valor;
-                    matriz[c - 1, f] = valor;
-                    matriz[c - 1, f - 1] = valor;
-                    matriz[0, filas - 1] = valor;
-                    matriz[0, f - 1] = valor;
-                    matriz[columnas - 1, 0] = valor;
-                    matriz[c - 1, 0] = valor;
-                    matriz[0, 0] = valor;
-                }
-                else if (c == columnas - 1)
-                {
-                    matriz[c, f] = valor;
-                    matriz[c, f - 1] = valor;
-                    matriz[c, f + 1] = valor;
-                    matriz[c - 1, f] = valor;
-                    matriz[0, f] = valor;
-                    matriz[c - 1, f - 1] = valor;
-                    matriz[c - 1, f + 1] = valor;
-                    matriz[0, f - 1] = valor;
-                    matriz[0, f + 1] = valor;
-                }
-                else if (c > 0 && c < filas - 1)
-                {
-                    matriz[c, f] = valor;
-                    matriz[c, f - 1] = valor;
-                    matriz[c, f + 1] = valor;
-                    matriz[c - 1, f] = valor;
-                    matriz[c + 1, f] = valor;
-                    matriz[c - 1, f - 1] = valor;
-                    matriz[c - 1, f + 1] = valor;
-                    matriz[c + 1, f - 1] = valor;
-                    matriz[c + 1, f + 1] = valor;
-                }
-                else if (c == 0 && f != filas - 1)
-                {
-                    matriz[c, f] = valor;
-                    matriz[c, f - 1] = valor;
-                    matriz[c, f + 1] = valor;
-                    matriz[columnas - 1, f] = valor;
-                    matriz[c + 1, f] = valor;
-                    matriz[columnas - 1, f - 1] = valor;
-                    matriz[columnas - 1, f + 1] = valor;
-                    matriz[c + 1, f- 1] = valor;
-                    matriz[c + 1, f + 1] = valor;
-                }
-                valor++;
+                    valor++;
             }
         }   
     }
